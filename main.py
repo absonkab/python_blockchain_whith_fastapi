@@ -6,12 +6,12 @@ app = _fastapi.FastAPI()
 
 
 # endpoint to mine a block
-@app.post("/mine_block/")
-def mine_block(data: str):
+@app.post("/mine_yennengaBlockchain_block/")
+def mine_yennenga_block(data: str):
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(
             status_code=400,
-            detail="The blockchain is invalid"
+            detail="The Yennenga Blockchain is invalid"
         )
     block = blockchain.mine_block(data=data)
     
@@ -19,12 +19,12 @@ def mine_block(data: str):
 
 
 # endpoint to return the entire blockchain
-@app.get("/blockchain/")
-def get_blockchain():
+@app.get("/yennenga_blockchain/")
+def get_yennenga_blockchain():
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(
             status_code=400, 
-            detail="The blockchain is invalid"
+            detail="The Yennenga Blockchain is invalid"
         )
     chain = blockchain.chain
     
@@ -32,17 +32,17 @@ def get_blockchain():
 
 
 # endpoint returns the previous block
-@app.get("/previous_block/")
-def previous_block():
+@app.get("/yennengaBlockchain_previous_block/")
+def yennenga_previous_block():
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(
-            status_code=400, detail="The blockchain is invalid"
+            status_code=400, detail="The Yennenga Blockchain is invalid"
         )
     return blockchain.get_previous_block()
 
 
 # endpoint to see if the blockchain is valid
-@app.get("/validate/")
-def is_blockchain_valid():
+@app.get("/validate_yennengaBlockchain/")
+def is_yennenga_blockchain_valid():
     
     return blockchain.is_chain_valid()
